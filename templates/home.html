@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Scrapper</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+	<form class="form-inline d-inline-flex p-2" action="search">
+
+		<div class="form-group mx-sm-3 mb-2">
+    		<input class="form-control" id="inputPassword2" placeholder="Search Keyword" name='keyword'>
+  		</div>
+  		<button type="submit" class="btn btn-primary mb-2">Search</button>
+	</form>
+	<div class="card-deck">
+  <div class="card">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">Instagram</h5>
+      <p class="card-text">Name : {{ instagram.Name }}</p>
+      <p class="card-text">ID : {{ instagram.ID }}</p>
+      <p class="card-text">Bio Data : {{ instagram.BioData }}</p>
+
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">Quora</h5>
+      <p class="card-text">Name: {{ quora.Name }}</p>
+      <p class="card-text">Description: {{ quora.Description }}</p>
+      <p class="card-text">School: {{ quora.School }}</p>
+      <p class="card-text">School Passing Date: {{ quora.SchoolPassingDate }}</p>
+      <p class="card-text">Work: {{ quora.work }}</p>
+      <p class="card-text">Work Duration: {{ quora.WorkDuration }}</p>
+      <p class="card-text">Location: {{ quora.location }}</p>
+      <p class="card-text">Knowledge: {{ quora.knowledge }}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">Twitter</h5>
+      <p class="card-text">User ID : {{ twitter.userid }}</p>
+      <p class="card-text">Location : {{ twitter.location }}</p>
+      <p class="card-text">Join Date : {{ twitter.join_date }}</p>
+      <p class="card-text">Links : {{ twitter.links }}</p>
+      <p class="card-text">Bio : {{ twitter.Bio }}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+<div class="card-deck">
+  <div class="card">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">Wikipedia</h5>
+      <p class="card-text">Name : {{ wiki.Name }}</p>
+      <p class="card-text">Description : {{ wiki.Description }}</p>
+      <p class="card-text">Data : {{ wiki.SearchData }}</p>
+      <p class="card-text">Wiki Link : {{ wiki.WikiLink }}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">Facebook</h5>
+      <p class="card-text">Name : {{ facebook.Name }}</p>
+      <p class="card-text">Education : {{ facebook.Education }}</p>
+      <p class="card-text">Location - {% for i,j in facebook.Places.items %}</p>
+      <p class="card-text">{{i}} : {{j}}</p>{% endfor %}
+      <p class="card-text">Contact Details - {% for i,j in facebook.ContactData.items %}</p>
+      <p class="card-text">{{i}} : {{j}}</p>{% endfor %}
+      <p class="card-text">Basic Details - {% for i,j in facebook.BasicData.items %}</p>
+      <p class="card-text">{{i}} : {{j}}</p>{% endfor %}
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">LinkedIn</h5>
+      <p class="card-text">Name : {{ linkedin.Name }}</p>
+      <p class="card-text">Description : {{ linkedin.UserDescription }}</p>
+      <p class="card-text">Location : {{ linkedin.UserLocation }}</p>
+      <p class="card-text">Summary : {{ linkedin.Summary }}</p>
+      <p class="card-text">Skill : {{ linkedin.skill }}</p>
+      <p class="card-text">Job Title : {{ linkedin.CurrentJobTitle }}</p>
+      <p class="card-text">Company : {{ linkedin.CurrentCompany }}</p>
+      <p class="card-text">Job Location : {{ linkedin.CurrentJobLocation }}</p>
+      <p class="card-text">Job Duartion : {{ linkedin.CurrentJobDuration }}</p>
+      <p class="card-text">Job Details : {{ linkedin.CurrentJobDetails }}</p>
+      <p class="card-text">URL : {{ linkedin.URL }}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
